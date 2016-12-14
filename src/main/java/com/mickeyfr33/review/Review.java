@@ -1,5 +1,7 @@
 package com.mickeyfr33.review;
 
+import com.mickeyfr33.core.BaseEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,17 +13,14 @@ import javax.persistence.Id;
  */
 
 @Entity
-public class Review {
+public class Review extends BaseEntity{
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private final Long id;
     private int rating;
     private String description;
 
     //todo: we are duplicating code here for every sigle entity. Share it?
     protected Review(){
-        id = null;
+        super();
     }
 
     public int getRating() {
