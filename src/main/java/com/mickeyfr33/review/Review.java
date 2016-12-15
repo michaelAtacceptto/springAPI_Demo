@@ -1,11 +1,9 @@
 package com.mickeyfr33.review;
 
 import com.mickeyfr33.core.BaseEntity;
+import com.mickeyfr33.course.Course;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * Created by michaelsmith on 12/14/16.
@@ -18,9 +16,25 @@ public class Review extends BaseEntity{
     private int rating;
     private String description;
 
+    @ManyToOne
+    private Course course;
+
     //todo: we are duplicating code here for every sigle entity. Share it?
     protected Review(){
         super();
+    }
+
+    public Review(int rating, String description) {
+        this.rating = rating;
+        this.description = description;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 
     public int getRating() {
